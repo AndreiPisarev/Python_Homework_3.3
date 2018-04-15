@@ -38,11 +38,10 @@ def mutual_friends(source_uid, target_uids, token):
     }
 
     response = requests.get('https://api.vk.com/method/friends.getMutual', params)
-    print(response.json())
     response_dict = response.json()
     list_friends = response_dict['response'][0]['common_friends']
 
-    print('Список общих друзей для ID-{} и ID-{}:'.format(source_uid, target_uids))
+    print('Список общих друзей ({}) для ID-{} c ID-{}:'.format(len(list_friends), source_uid, target_uids))
     for friend in list_friends:
         print('https://vk.com/id{}'.format(friend))
 
